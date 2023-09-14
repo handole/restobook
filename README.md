@@ -1,4 +1,4 @@
-# RESTO Reservation
+# RESTO Booking
 
 ### Setup Poetry
 
