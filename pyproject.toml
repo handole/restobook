@@ -2,7 +2,7 @@
 name = "reservate"
 version = "0.1.0"
 description = ""
-authors = ["denihandoko <denihhandoko@gmail.com>"]
+authors = ["denihandoko1 <denihhandoko@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]

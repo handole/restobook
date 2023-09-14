@@ -1,5 +1,8 @@
 # RESTO Booking
 
+### Config .env 
+I will sent .env file for config string credential
+
 ### Setup Poetry
 
 **Pre Setup: Python 3.8.x**
