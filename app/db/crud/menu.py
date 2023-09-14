@@ -13,10 +13,8 @@ def get_menu(db: Session, menu_id: int):
     return menu
 
 
-def get_menus(
-    db: Session, skip: int = 0, limit: int = 100
-) -> List[menu_schema.MenuOut]:
-    return db.query(Menu).offset(skip).limit(limit).all()
+def get_menus(db: Session, resto_id: int) -> List[menu_schema.MenuOut]:
+    return db.query(Menu).filter(Menu.resto_id == resto_id)
 
 
 def create_menu(db: Session, menu: menu_schema.MenuCreate):

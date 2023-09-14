@@ -43,12 +43,12 @@ async def resto_details(
     return resto
 
 
-@router.get("/table/", response_model=List[Tables])
+@router.get("/table/{resto_id}", response_model=List[Tables])
 async def table_list(
     response: Response, db=Depends(get_db),
     user: User = Depends(get_current_active_user)
 ):
-    table = get_tables(db)
+    table = get_tables(db, resto_id)
     response.headers["Content-Range"] = f"0-9/{len(table)}"
     return table
 
@@ -63,12 +63,12 @@ async def table_details(
     return table
 
 
-@router.get("/menu/", response_model=List[Menu])
+@router.get("/menu/{resto_id}", response_model=List[Menu])
 async def menu_list(
     response: Response, db=Depends(get_db),
     user: User = Depends(get_current_active_user)
 ):
-    menu = get_menus(db)
+    menu = get_menus(db, resto_id)
     response.headers["Content-Range"] = f"0-9/{len(menu)}"
     return menu
 
@@ -103,9 +103,9 @@ async def reservate_edit(
 @router.get("/booking/", response_model=List[Reservate])
 async def reservate_list(
     response: Response, db=Depends(get_db),
-    user: User = Depends(get_current_active_user)
+    user: User = Depends(get_current_active_user),
 ):
-    reservate = get_reservates(db)
+    reservate = get_reservates(db, user.id)
     response.headers["Content-Range"] = f"0-9/{len(reservate)}"
     return reservate
 
@@ -143,7 +143,7 @@ async def ticket_list(
     response: Response, db=Depends(get_db),
     user: User = Depends(get_current_active_user)
 ):
-    ticket = get_tickets(db)
+    ticket = get_tickets(db, user.id)
     response.headers["Content-Range"] = f"0-9/{len(ticket)}"
     return ticket
 

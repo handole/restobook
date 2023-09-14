@@ -14,9 +14,8 @@ def get_ticket(db: Session, ticket_id: int):
     return ticket
 
 
-def get_tickets(db: Session, skip: int = 0,
-    limit: int = 100) -> List[ticket_schema.TicketOut]:
-    return db.query(Ticket).offset(skip).limit(limit).all()
+def get_tickets(db: Session, user_id: int) -> List[ticket_schema.TicketOut]:
+    return db.query(Ticket).filter(Ticket.user_id == user_id)
 
 
 def create_ticket(db: Session, ticket: ticket_schema.Ticket):

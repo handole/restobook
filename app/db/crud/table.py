@@ -14,9 +14,9 @@ def get_table(db: Session, table_id: int):
 
 
 def get_tables(
-    db: Session, skip: int = 0, limit: int = 100
+    db: Session, resto_id: int
 ) -> List[table_schema.TableOut]:
-    return db.query(Tables).offset(skip).limit(limit).all()
+    return db.query(Tables).filter(Tables.resto_id == resto_id)
 
 
 def create_table(db: Session, table: table_schema.TableCreate):

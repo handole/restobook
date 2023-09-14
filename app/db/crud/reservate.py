@@ -13,9 +13,8 @@ def get_reservate(db: Session, reservate_id: int):
     return reservate
 
 
-def get_reservates(db: Session, skip: int = 0,
-    limit: int = 100) -> List[reservate_schema.ReservateOut]:
-    return db.query(Reservation).offset(skip).limit(limit).all()
+def get_reservates(db: Session, user_id: int) -> List[reservate_schema.ReservateOut]:
+    return db.query(Reservation).filter(Reservation.user_id == user_id)
 
 
 def create_reservate(db: Session, reservate: reservate_schema.Reservate):
