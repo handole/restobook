@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "reservate"
+version = "0.1.0"
+description = ""
+authors = ["denihandoko <denihhandoko@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.103.1"
+SQLAlchemy = "^2.0.20"
+uvicorn = "^0.23.2"
+PyJWT = "^2.8.0"
+cryptography = "^41.0.3"
+alembic = "^1.12.0"
+passlib = "^1.7.4"
+pymysql = "^1.1.0"
+pydantic = {version = "1.10.8", extras = ["dotenv"]}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
