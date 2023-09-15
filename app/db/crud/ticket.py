@@ -15,13 +15,17 @@ def get_ticket(db: Session, ticket_id: int):
 
 
 def get_tickets(db: Session, user_id: int) -> List[ticket_schema.TicketOut]:
-    return db.query(Ticket).filter(Ticket.user_id == user_id)
+    return db.query(Ticket).filter(Ticket.user_id == user_id).all()
 
 
-def create_ticket(db: Session, ticket: ticket_schema.Ticket):
-    db_ticket = ticket(
-        name=ticket.name,
-        stock=ticket.stock,
+def create_ticket(db: Session, data: ticket_schema.TicketCreate, user_id):
+    db_ticket = Ticket(
+        price=data.price,
+        checkin=data.checkin,
+        checkout=data.checkout,
+        table_id=data.table_id,
+        menu_id=data.menu_id,
+        user_id=user_id,
         is_active=True,
     )
     db.add(db_ticket)

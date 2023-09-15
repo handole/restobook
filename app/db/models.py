@@ -46,7 +46,7 @@ class Tables(Base):
     __tablename__='tables'
 
     id = Column(Integer, primary_key=True, index=True)
-    number = Column(Integer, unique=True, index=True, nullable=False)
+    number = Column(String(50), index=True, nullable=False)
     is_active = Column(Boolean, default=True)
     created = Column(DateTime, default=datetime.now)
     updated = Column(DateTime, default=datetime.now, onupdate=datetime.now)

@@ -14,13 +14,14 @@ def get_reservate(db: Session, reservate_id: int):
 
 
 def get_reservates(db: Session, user_id: int) -> List[reservate_schema.ReservateOut]:
-    return db.query(Reservation).filter(Reservation.user_id == user_id)
+    return db.query(Reservation).filter(Reservation.user_id == user_id).all()
 
 
-def create_reservate(db: Session, reservate: reservate_schema.Reservate):
-    db_reservate = reservate(
-        name=reservate.name,
-        stock=reservate.stock,
+def create_reservate(db: Session, data: reservate_schema.ReservateBase, user_id: str):
+    db_reservate = Reservation(
+        user_id=user_id,
+        table_id=data.table_id,
+        menu_id=data.menu_id,
         is_active=True,
     )
     db.add(db_reservate)

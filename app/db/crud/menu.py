@@ -14,13 +14,14 @@ def get_menu(db: Session, menu_id: int):
 
 
 def get_menus(db: Session, resto_id: int) -> List[menu_schema.MenuOut]:
-    return db.query(Menu).filter(Menu.resto_id == resto_id)
+    return db.query(Menu).filter(Menu.resto_id == resto_id).all()
 
 
 def create_menu(db: Session, menu: menu_schema.MenuCreate):
     db_menu = Menu(
         name=menu.name,
         stock=menu.stock,
+        resto_id=menu.resto_id,
         is_active=True,
     )
     db.add(db_menu)

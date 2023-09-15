@@ -3,6 +3,7 @@ from pydantic import BaseModel
 class MenuBase(BaseModel):
     name: str
     stock: int
+    resto_id: int
 
 class MenuOut(MenuBase):
     pass

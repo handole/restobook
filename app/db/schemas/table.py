@@ -4,7 +4,7 @@ from typing import List
 from app.db.schemas.reservate import Reservate
 
 class TableBase(BaseModel):
-    number: int
+    number: str
     resto_id: int
 
 class TableOut(TableBase):
